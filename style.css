@@ -1,0 +1,118 @@
+html, body{
+    height: 100%;
+    padding:0;
+    margin:0;
+}
+
+.grid-container {
+    height: 100vh;
+    background-color: #263238;
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "barra_lateral cabecera cabecera cabecera"
+    "barra_lateral panel_central panel_central panel_central"
+    "barra_lateral panel_central panel_central panel_central";
+}
+
+.cabecera {
+    background-color: #126561;
+    display: grid;
+    grid-template-columns: 1fr 1.8fr 0.2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". . selector_tema"
+    ". . .";
+    grid-area: cabecera;
+}
+
+.selector_tema {
+    background-color: aqua;
+    grid-area: selector_tema;
+}
+
+.barra_lateral {
+    background-color: #199d99;
+    grid-area: barra_lateral;
+}
+
+.panel_central {
+    background-color: #126561;
+    display: grid;
+    grid-template-columns: 0.9fr 1.2fr 0.9fr;
+    grid-template-rows: 0.6fr 1.8fr 0.6fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". . ."
+    "div_pistas div_pasatiempo ."
+    ". . .";
+    grid-area: panel_central;
+    max-height: 100vh;
+}
+
+.div_pistas {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1.8fr 0.2fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". div_lista_pistas div_lista_pistas ."
+    ". div_input_pistas div_input_pistas div_boton_pistas";
+    grid-area: div_pistas;
+}
+
+.div_pasatiempo {
+    background-color: wheat;
+    grid-area: div_pasatiempo;
+}
+
+.div_input_pistas {
+    grid-area: div_input_pistas;
+    background-color: green;
+}
+
+.div_boton_pistas {
+    grid-area: div_boton_pistas;
+    background-color: red;
+}
+
+.div_lista_pistas {
+    grid-area: div_lista_pistas;
+    height: 90vh;
+    overflow-y: scroll;
+    background-color: blueviolet;
+}
+
+.input_celda_pasatiempo {
+    width: 50%;
+    height: 50%;
+    text-transform:uppercase;
+}
+
+.celda_pasatiempo{
+    width: auto;
+}
+
+#lista_pistas{
+    height: inherit;
+    list-style-type: none;
+    overflow-y: scroll;
+}
+
+#tabla_pasatiempo{
+    height: 100%;
+    width: 100%;
+
+}
+
+.fila_erronea{
+    background: red;
+}
+
+.fila_correcta{
+    background: green;
+}

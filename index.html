@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="es"  crossorigin="anonymous">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pasatiempo en cascada</title>
+</head>
+<body >
+
+<div class="grid-container">
+    <div class="cabecera">
+        <div class="selector_tema"></div>
+    </div>
+    <div class="barra_lateral">
+        <button id="boton_guardar" onclick="guardar_pasatiempo()">GUARDAR!</button>
+    </div>
+    <div class="panel_central">
+        <div class="div_pistas">
+            <div class="div_input_pistas">
+                <input type="text" id="input_pista"/>
+                <button id="boton_pista" onclick="mostrar_pistas()">PISTA!</button>
+            </div>
+            <div class="div_lista_pistas" id="div_lista_pistas">
+            </div>
+        </div>
+        <div class="div_pasatiempo">
+            <table id="tabla_pasatiempo"></table>
+        </div>
+    </div>
+</div>
+
+<script src="script.js" type="text/javascript"></script>
+</body>
+</html>
