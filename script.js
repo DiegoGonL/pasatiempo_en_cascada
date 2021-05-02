@@ -88,6 +88,12 @@ function comprobar_fila(n_fila){
     }
 }
 
+function comprobar_pasatiempo(){
+    for (let i = 0; i < tabla_pasatiempo.length; i++) {
+        comprobar_fila(i)
+    }
+}
+
 function en_diccionario(palabra){
     return mi_diccionario.includes(palabra)
 }
@@ -188,11 +194,23 @@ function guardar_pasatiempo(){
 function cargar_pasatiempo(){
     let tabla = window.localStorage.getItem("pasatiempo")
     let filas = tabla.split(";")
-    console.log("Filas", ...filas)
+    let celdas = []
+
+    filas.forEach(f => {
+        celdas = celdas.concat(f.split(","))
+    })
+
+    tabla_pasatiempo.forEach(f => {
+        for (let i = 0; i < f.length ; i++) {
+            f[i].firstChild.value = celdas.shift()
+        }
+    })
+
+    comprobar_pasatiempo()
 }
 
 function limpiar_almacenamiento(){
-
+    window.localStorage.clear()
 }
 
 fetch("https://ordenalfabetix.unileon.es/aw/diccionario.txt")
