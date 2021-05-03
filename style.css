@@ -1,118 +1,366 @@
 html, body{
-    height: 100%;
+    height: 100vh;
     padding:0;
     margin:0;
 }
 
+.tema-claro {
+    --color-primary: white;
+    --color-secondary: #d4d4d4;
+    --color-accent: #57777e;
+    --font-color: #000000;
+    --color-hover-button: #3E9B67;
+}
+.tema-oscuro {
+    --color-primary: #126561;
+    --color-secondary: #199d99;
+    --color-accent: #81c1be;
+    --font-color: #ffffff;
+    --color-hover-button: #3E9B67;
+}
+
 .grid-container {
     height: 100vh;
-    background-color: #263238;
     display: grid;
-    grid-template-columns: 0.5fr 1.5fr 1fr 1fr;
-    grid-template-rows: 0.5fr 1.5fr 1fr;
+    grid-template-columns: 0.7fr 1.3fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1.8fr ;
     gap: 0px 0px;
     grid-template-areas:
     "barra_lateral cabecera cabecera cabecera"
-    "barra_lateral panel_central panel_central panel_central"
     "barra_lateral panel_central panel_central panel_central";
 }
 
 .cabecera {
-    background-color: #126561;
+    padding: 1%;
+    background-color: var(--color-primary);
     display: grid;
-    grid-template-columns: 1fr 1.8fr 0.2fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 0px 0px;
+    grid-template-columns: 0.9fr 1.9fr 0.2fr;
+    gap: 0 0;
     grid-template-areas:
-    ". . selector_tema"
-    ". . .";
+    ". h1_cabecera selector_tema";
     grid-area: cabecera;
 }
 
 .selector_tema {
-    background-color: aqua;
     grid-area: selector_tema;
 }
 
+.h1_cabecera{
+    grid-area: h1_cabecera;
+    color: var(--font-color);
+    font-family: Helvetica, sans-serif;
+}
+
 .barra_lateral {
-    background-color: #199d99;
+    background-color: var(--color-secondary);
     grid-area: barra_lateral;
-}
-
-.panel_central {
-    background-color: #126561;
     display: grid;
-    grid-template-columns: 0.9fr 1.2fr 0.9fr;
-    grid-template-rows: 0.6fr 1.8fr 0.6fr;
-    gap: 0px 0px;
+    grid-template-rows: 0.3fr 2.4fr 0.3fr;
     grid-template-areas:
-    ". . ."
-    "div_pistas div_pasatiempo ."
-    ". . .";
-    grid-area: panel_central;
-    max-height: 100vh;
-}
-
-.div_pistas {
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1.8fr 0.2fr;
-    gap: 0px 0px;
-    grid-template-areas:
-    ". div_lista_pistas div_lista_pistas ."
-    ". div_input_pistas div_input_pistas div_boton_pistas";
-    grid-area: div_pistas;
-}
-
-.div_pasatiempo {
-    background-color: wheat;
-    grid-area: div_pasatiempo;
-}
-
-.div_input_pistas {
-    grid-area: div_input_pistas;
-    background-color: green;
-}
-
-.div_boton_pistas {
-    grid-area: div_boton_pistas;
-    background-color: red;
+    "barra_busqueda"
+    "div_lista_pistas"
+    "div_borrar";
 }
 
 .div_lista_pistas {
     grid-area: div_lista_pistas;
-    height: 90vh;
-    overflow-y: scroll;
-    background-color: blueviolet;
+    overflow-y: auto;
+    text-align: center;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    color: var(--font-color);
 }
 
-.input_celda_pasatiempo {
-    width: 50%;
-    height: 50%;
-    text-transform:uppercase;
+.div_lista_pistas::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
 }
 
-.celda_pasatiempo{
-    width: auto;
+.div_lista_pistas::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
 }
 
-#lista_pistas{
-    height: inherit;
-    list-style-type: none;
-    overflow-y: scroll;
+.div_lista_pistas::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+}
+
+.panel_central {
+    background-color: var(--color-primary);
+    display: grid;
+    grid-template-columns: 0.9fr 1.2fr 0.9fr;
+    grid-template-rows: 0.4fr 1.8fr 0.8fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    ". . ."
+    ". div_pasatiempo ."
+    ". div_descripciones .";
+    grid-area: panel_central;
+    max-height: 100vh;
+}
+
+.div_pasatiempo {
+    grid-area: div_pasatiempo;
+}
+
+.div_descripciones{
+    margin-top: 10%;
+    grid-area: div_descripciones;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-size: 15px;
+    color: var(--font-color);
 }
 
 #tabla_pasatiempo{
     height: 100%;
     width: 100%;
+    table-layout: auto;
+}
 
+.input_celda_pasatiempo {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-size: 20px;
+    width: 100%;
+    padding: 0;
+    border: 1px white;
+    height: 1.2em;
+    text-transform:uppercase;
+    background-color: var(--color-secondary);
+    color: var(--font-color);
+}
+
+.celda_pasatiempo{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.div_boton_borrar{
+    grid-area: div_borrar;
+    margin: 0 0;
+    text-align: center;
+    padding: 1.5rem 1.5rem;
+    filter: url('#goo');
+}
+
+.boton_borrar {
+    display: inline-block;
+    text-align: center;
+    background: var(--color-primary);
+    color: var(--font-color);
+    font-weight: bold;
+    padding: 1.18em 1.32em 1.03em;
+    line-height: 1;
+    border-radius: 1em;
+    position: relative;
+    min-width: 8.23em;
+    text-decoration: none;
+    font-family: Helvetica, sans-serif;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.boton_borrar:before,
+.boton_borrar:after {
+    width: 4.4em;
+    height: 2.95em;
+    position: absolute;
+    content: "";
+    display: inline-block;
+    background: var(--color-primary);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    transform: scale(0);
+    z-index: -1;
+}
+
+.boton_borrar:before {
+    top: -25%;
+    left: 20%;
+}
+
+.boton_borrar:after {
+    bottom: -25%;
+    right: 20%;
+}
+
+.boton_borrar:hover:before,
+.boton_borrar:hover:after {
+    transform: none;
 }
 
 .fila_erronea{
-    background: red;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
 }
 
 .fila_correcta{
-    background: green;
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+}
+.barra_busqueda{
+    grid-area: barra_busqueda;
+    padding: 20% 5% 5%;
+    text-align: center;
+}
+
+.input_pista{
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    outline: 0;
+    padding-bottom: 10px;
+    border: 0 solid transparent;
+    border-bottom: 1px solid var(--font-color);
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    color: var(--font-color);
+}
+
+#input_pista::-webkit-input-placeholder{
+    color: var(--font-color);
+    text-align: center;
+}
+
+#input_pista:focus::-webkit-input-placeholder {
+    color: var(--color-accent);
+}
+
+#input_pista:focus{
+    border-bottom: 2px solid var(--font-color);
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    width: 40px;
+    left: 0px;
+    right: 4px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    box-shadow: 0 0 15px #2020203d;
+    background: #1f4870 url('https://i.ibb.co/FxzBYR9/night.png') no-repeat center;
+}
+
+input:checked + .slider {
+    background-color: #2196f3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+    background:  white url('https://i.ibb.co/7JfqXxB/sunny.png') no-repeat center;
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.cookieConsentContainer {
+    z-index: 999;
+    width: 350px;
+    min-height: 20px;
+    box-sizing: border-box;
+    padding: 30px 30px 30px 30px;
+    background: #232323;
+    overflow: hidden;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+}
+
+.cookieConsentContainer .cookieTitle a {
+    font-family: OpenSans, arial, "sans-serif";
+    color: #FFFFFF;
+    font-size: 22px;
+    line-height: 20px;
+    display: block;
+}
+
+.cookieConsentContainer .cookieDesc p {
+    padding: 0;
+    font-family: OpenSans, arial, "sans-serif";
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 20px;
+    display: block;
+    margin: 10px 0 0;
+}
+
+.botones_cookies{
+    display: inline-block;
+}
+
+.cookie_aceptar a, .cookie_rechazo a {
+    display: block;
+    font-family: OpenSans, arial, "sans-serif";
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 14px;
+    background: #000000;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.cookie_aceptar a:hover {
+    cursor: pointer;
+    background: #3E9B67;
+}
+
+.cookieConsentContainer .cookie_rechazo a:hover {
+    cursor: pointer;
+    background: #3E9B67;
 }
