@@ -32,7 +32,7 @@
         <div class="div_lista_pistas" id="div_lista_pistas"></div>
 
         <div class="div_boton_borrar">
-            <a class="boton_borrar" onclick="limpiar_almacenamiento()">Borrar pasatiempo almacenado</a>
+            <a class="boton_borrar" id='no-link' href="#popup1" >Borrar pasatiempo almacenado</a>
         </div>
 
     </div>
@@ -52,6 +52,20 @@
 
     </div>
 
+</div>
+
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <h2>¿Borrar el almacenamiento local?</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            Esta acción no se podrá deshacer, y perderá su progreso.
+        </div>
+        <div class="botonera_dialogo">
+            <a class="boton_borrar" id="boton_borrar_aceptar" href="#"  onclick="limpiar_almacenamiento()">Eliminar</a>
+            <a class="boton_borrar" id="boton_borrar_rechazar" href="#" >Conservar</a>
+        </div>
+    </div>
 </div>
 
 <script src="script.js" type="text/javascript"></script>

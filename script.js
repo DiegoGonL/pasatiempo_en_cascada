@@ -227,12 +227,9 @@ function cargar_pasatiempo(){
     comprobar_pasatiempo()
 }
 
-function limpiar_almacenamiento(){
+async function limpiar_almacenamiento() {
     if (cookies_aceptadas) {
         window.localStorage.clear()
-        window.alert("Almacenamiento borrado correctamente.")
-    }else {
-        window.alert("No hay nada que eliminar.")
     }
 }
 
@@ -280,23 +277,27 @@ function set_cookies(aceptadas){
     document.getElementById("cookieConsentContainer").style.visibility = "hidden"
 }
 
+function crear_popup_cookies()
+{
+    document.body.innerHTML += "<div class=\"cookieConsentContainer\" id=\"cookieConsentContainer\" style=\"opacity: 1; display: block;\">\n" +
+        "    <div class=\"cookieTitle\">\n" +
+        "        <a>Almacenamiento local.</a>\n" +
+        "    </div>\n" +
+        "    <div class=\"cookieDesc\">\n" +
+        "        <p>¿Acepta que almacenemos datos de esta página web como la resolución parcial o el tema para su posterior recuperación?</p>\n" +
+        "    </div>\n" +
+        "        <div class=\"cookie_aceptar\">\n" +
+        "            <a onclick=\"set_cookies(true)\">Acepto</a>\n" +
+        "        </div>\n" +
+        "        <div class=\"cookie_rechazo\">\n" +
+        "            <a onclick=\"set_cookies(false)\">Rechazar</a>\n" +
+        "        </div>\n" +
+        "</div>"
+}
+
 (function () {
     if (!cookies_aceptadas) {
-
-        document.body.innerHTML += "<div class=\"cookieConsentContainer\" id=\"cookieConsentContainer\" style=\"opacity: 1; display: block;\">\n" +
-            "    <div class=\"cookieTitle\">\n" +
-            "        <a>Almacenamiento local.</a>\n" +
-            "    </div>\n" +
-            "    <div class=\"cookieDesc\">\n" +
-            "        <p>¿Acepta que almacenemos datos de esta página web como la resolución parcial o el tema para su posterior recuperación?</p>\n" +
-            "    </div>\n" +
-            "        <div class=\"cookie_aceptar\">\n" +
-            "            <a onclick=\"set_cookies(true)\">Acepto</a>\n" +
-            "        </div>\n" +
-            "        <div class=\"cookie_rechazo\">\n" +
-            "            <a onclick=\"set_cookies(false)\">Rechazar</a>\n" +
-            "        </div>\n" +
-            "</div>"
+        crear_popup_cookies();
     }
 })();
 
